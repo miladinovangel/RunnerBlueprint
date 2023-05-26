@@ -48,3 +48,6 @@ public class PlayerController : MonoBehaviour
 //1. player-ot avtomatski da se dvizi napred
 //2. koga ke stisneme levo ili desno na tasta. treba playerot da dashnuva levo i desno
 //3. jump
+
+//1. jump ne treba da moze da stisneme se dodeka ne spadne playerot
+//2. dash ne treba da pravime nadvor od patot
