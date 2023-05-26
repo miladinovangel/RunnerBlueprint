@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float dashPower;
     [SerializeField] private float positionYGravity;
 
+    private bool isDashing;// vodi evidencija dali player-ot momentalno e vo dash
+
     private void Update()
     {
         Jump();
@@ -37,14 +39,26 @@ public class PlayerController : MonoBehaviour
 
     private void Dash()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && transform.position.x > -2f)// i dokolku ne sme na levata strana
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && transform.position.x > -2f && !isDashing)// i dokolku ne sme na levata strana
         {
-            rbPlayer.AddForce(Vector3.left * dashPower);
+            Dash(Vector3.left);
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow) && transform.position.x < 2f)
+        else if (Input.GetKeyDown(KeyCode.RightArrow) && transform.position.x < 2f && !isDashing)
         {
-            rbPlayer.AddForce(Vector3.right * dashPower);
+            Dash(Vector3.right);
         }
+    }
+
+    private void Dash(Vector3 direction)
+    {
+        rbPlayer.AddForce(direction * dashPower);
+        isDashing = true;
+        Invoke("ResetDash", 0.75f);
+    }
+
+    private void ResetDash()
+    {
+        isDashing = false;
     }
 }
 
