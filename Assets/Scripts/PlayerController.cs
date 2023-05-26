@@ -28,17 +28,20 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            rbPlayer.AddForce(Vector3.up * jumpPower);
+            if(transform.position.y >= 2 && transform.position.y <= 3)
+            {
+                rbPlayer.AddForce(Vector3.up * jumpPower);
+            }
         }
     }
 
     private void Dash()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && transform.position.x > -2f)// i dokolku ne sme na levata strana
         {
             rbPlayer.AddForce(Vector3.left * dashPower);
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKeyDown(KeyCode.RightArrow) && transform.position.x < 2f)
         {
             rbPlayer.AddForce(Vector3.right * dashPower);
         }
