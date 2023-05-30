@@ -27,16 +27,24 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Released primary button."); // pecatenje
             Debug.Log(Input.mousePosition); // pecatenje
-            
+            //Vector3 dif = Input.mousePosition - mouseDownPos;
+            //Debug.Log(dif);
+
             if (Input.mousePosition.x < mouseDownPos.x)
             {
                 Debug.Log("Swipe left");
-                Dash(Vector3.left);
+                //Dash(Vector3.left);
             }
             else
             {
                 Debug.Log("Swipe right");
-                Dash(Vector3.right);
+                //Dash(Vector3.right);
+            }
+
+            if (Input.mousePosition.y > mouseDownPos.y)
+            {
+                // swipe up
+                Jump();
             }
         }
 
@@ -63,7 +71,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+//if (Input.GetKeyDown(KeyCode.Space))
         {
             if(transform.position.y >= 2 && transform.position.y <= 3)
             {
