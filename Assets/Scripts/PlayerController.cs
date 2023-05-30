@@ -27,26 +27,47 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Released primary button."); // pecatenje
             Debug.Log(Input.mousePosition); // pecatenje
-            //Vector3 dif = Input.mousePosition - mouseDownPos;
-            //Debug.Log(dif);
+            Vector3 dif = Input.mousePosition - mouseDownPos;
+            Debug.Log(dif);
 
-            if (Input.mousePosition.x < mouseDownPos.x)
+            if (Mathf.Abs(dif.x) > Mathf.Abs(dif.y))// rastojanie pox sporedeno so y
             {
-                Debug.Log("Swipe left");
-                //Dash(Vector3.left);
+                if (Input.mousePosition.x < mouseDownPos.x)
+                {
+                    Debug.Log("Swipe left");
+                    Dash(Vector3.left);
+                }
+                else
+                {
+                    Debug.Log("Swipe right");
+                    Dash(Vector3.right);
+                }
             }
             else
             {
-                Debug.Log("Swipe right");
-                //Dash(Vector3.right);
+                if (Input.mousePosition.y > mouseDownPos.y)
+                {
+                    // swipe up
+                    Jump();
+                }
             }
+            
 
-            if (Input.mousePosition.y > mouseDownPos.y)
-            {
-                // swipe up
-                Jump();
-            }
+            
         }
+
+        // 2 nacin kako moze da se detektira input na mobilni uredi (i popravilen i optimalen)
+        // mobile device input
+        //Touch touch = Input.GetTouch(0);
+        //if (touch.phase == TouchPhase.Began) // Input.GetMouseButtonDown(0)
+        //{
+        //    Vector3 touchPosition = touch.position; // Input.mousePosition
+        //}
+        //if (touch.phase == TouchPhase.Ended) // Input.GetMouseButtonUp(0)
+        //{
+
+        //}
+
 
         //if (Input.GetMouseButtonDown(1))
         //    Debug.Log("Pressed secondary button.");
