@@ -6,6 +6,7 @@ public class RoadCreator : MonoBehaviour
 {
     [SerializeField] private GameObject roadPrefab;
     [SerializeField] private float distance;
+    [SerializeField] private int roadPartCount = 100;
 
     private void Start()
     {
@@ -15,7 +16,7 @@ public class RoadCreator : MonoBehaviour
     private void CreateRoad()
     {
         float Zposition = 0;
-        for(int i = 0; i < 50; i++)
+        for(int i = 0; i < roadPartCount; i++)
         {
             Vector3 position = new Vector3(0f, 0f, Zposition);
             GameObject roadInstance = Instantiate(roadPrefab, position, Quaternion.identity, transform);
