@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,12 +10,27 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float dashPower;
     [SerializeField] private float positionYGravity;
 
+    //private Coroutine coro;
+
     private bool isDashing;// vodi evidencija dali player-ot momentalno e vo dash
 
     private void Update()
     {
-        Jump();
-        Dash();
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("Pressed primary button.");
+            Debug.Log(Input.mousePosition);
+        }
+
+        //if (Input.GetMouseButtonDown(1))
+        //    Debug.Log("Pressed secondary button.");
+
+        //if (Input.GetMouseButtonDown(2))
+        //    Debug.Log("Pressed middle click.");
+
+
+        //Jump();
+        //Dash();
     }
 
     private void FixedUpdate() // koga rabotime so fixed update, ne koristime time.deltaTime
@@ -35,6 +52,7 @@ public class PlayerController : MonoBehaviour
                 rbPlayer.AddForce(Vector3.up * jumpPower);
             }
         }
+        //coro = StartCoroutine(TestCoro());
     }
 
     private void Dash()
@@ -60,6 +78,18 @@ public class PlayerController : MonoBehaviour
     {
         isDashing = false;
     }
+
+    //private void Test()
+    //{
+    //    StopAllCoroutines();
+    //    if (coro != null)
+    //        StopCoroutine(coro);
+    //}
+
+    //private IEnumerator TestCoro()
+    //{
+    //    yield return new WaitForEndOfFrame();
+    //} 
 }
 
 //1. player-ot avtomatski da se dvizi napred
