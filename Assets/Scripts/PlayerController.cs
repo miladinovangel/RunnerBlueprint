@@ -10,16 +10,34 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float dashPower;
     [SerializeField] private float positionYGravity;
 
-    //private Coroutine coro;
-
     private bool isDashing;// vodi evidencija dali player-ot momentalno e vo dash
+    private Vector3 mouseDownPos;
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        //Debug.Log(Input.mousePosition);
+
+        if (Input.GetMouseButtonDown(0)) // koga ke go stisneme leviot klik od gluvceto
         {
-            Debug.Log("Pressed primary button.");
-            Debug.Log(Input.mousePosition);
+            Debug.Log("Pressed primary button."); // pecatenje
+            Debug.Log(Input.mousePosition); // pecatenje
+            mouseDownPos = Input.mousePosition; // zacuvuvame posicija na strelkata vo momentot koga go klikame leviot klik
+        }
+        if (Input.GetMouseButtonUp(0)) // koga ke go pustime leviot klik
+        {
+            Debug.Log("Released primary button."); // pecatenje
+            Debug.Log(Input.mousePosition); // pecatenje
+            
+            if (Input.mousePosition.x < mouseDownPos.x)
+            {
+                Debug.Log("Swipe left");
+                Dash(Vector3.left);
+            }
+            else
+            {
+                Debug.Log("Swipe right");
+                Dash(Vector3.right);
+            }
         }
 
         //if (Input.GetMouseButtonDown(1))
@@ -52,20 +70,19 @@ public class PlayerController : MonoBehaviour
                 rbPlayer.AddForce(Vector3.up * jumpPower);
             }
         }
-        //coro = StartCoroutine(TestCoro());
     }
 
-    private void Dash()
-    {
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && transform.position.x > -2f && !isDashing)// i dokolku ne sme na levata strana
-        {
-            Dash(Vector3.left);
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow) && transform.position.x < 2f && !isDashing)
-        {
-            Dash(Vector3.right);
-        }
-    }
+    //private void Dash()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.LeftArrow) && transform.position.x > -2f && !isDashing)// i dokolku ne sme na levata strana
+    //    {
+    //        Dash(Vector3.left);
+    //    }
+    //    else if (Input.GetKeyDown(KeyCode.RightArrow) && transform.position.x < 2f && !isDashing)
+    //    {
+    //        Dash(Vector3.right);
+    //    }
+    //}
 
     private void Dash(Vector3 direction)
     {
@@ -78,18 +95,6 @@ public class PlayerController : MonoBehaviour
     {
         isDashing = false;
     }
-
-    //private void Test()
-    //{
-    //    StopAllCoroutines();
-    //    if (coro != null)
-    //        StopCoroutine(coro);
-    //}
-
-    //private IEnumerator TestCoro()
-    //{
-    //    yield return new WaitForEndOfFrame();
-    //} 
 }
 
 //1. player-ot avtomatski da se dvizi napred
