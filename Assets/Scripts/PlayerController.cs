@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpPower;
     [SerializeField] private float dashPower;
     [SerializeField] private float positionYGravity;
+    [SerializeField] private float finishZPosition;
+    [SerializeField] private Animator winPanelAnimator;
 
     private bool isDashing;// vodi evidencija dali player-ot momentalno e vo dash
     private Vector3 mouseDownPos;
@@ -42,6 +44,20 @@ public class PlayerController : MonoBehaviour
                     Jump();
                 }
             }
+        }
+
+        if (transform.position.z > finishZPosition)
+        {
+            // treba da ja prikazeme animacijata Car_show
+        }
+
+        if (Input.GetKeyDown(KeyCode.S))//show
+        {
+            winPanelAnimator.SetTrigger("show");
+        }
+        else if (Input.GetKeyDown(KeyCode.H)) // hide
+        {
+            winPanelAnimator.SetTrigger("hide");
         }
     }
 
