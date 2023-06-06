@@ -17,10 +17,21 @@ public class CharacterAnimationController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             anim.SetTrigger("Walk");
+            anim.SetBool("Walking", true);
         }
         else if (Input.GetKeyUp(KeyCode.UpArrow))
         {
             anim.SetTrigger("Idle");
+            anim.SetBool("Walking", false);
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            anim.SetTrigger("Jump");
+        }
+
+
+        // int trigger
+        //anim.SetInteger("test", 5);
+        //anim.SetFloat("test", 5f);
     }
 }
