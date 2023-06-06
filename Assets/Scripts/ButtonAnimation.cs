@@ -39,6 +39,6 @@ public class ButtonAnimation : MonoBehaviour
 }
 
 
-// napravete defaultna animacija na karakterot da bide idle
-// koga ke klikneme na kopceto ArrowUp, treba da se napravi tranzicija kon walk animacija
-// koga ke se pusti kopceto ArrowUp, treba da se vratite na idle animacija
+// 1. napravete defaultna animacija na karakterot da bide idle
+// 2. koga ke klikneme na kopceto ArrowUp, treba da se napravi tranzicija kon walk animacija
+// 3. koga ke se pusti kopceto ArrowUp, treba da se vratite na idle animacija
