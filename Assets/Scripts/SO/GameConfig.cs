@@ -8,4 +8,5 @@ public class GameConfig : ScriptableObject
     public float playerSpeed;
     public float playerJumpPower;
     public float playerDashPower;
+    public float playerWinZTarget;
 }

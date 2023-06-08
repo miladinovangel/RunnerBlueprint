@@ -4,17 +4,21 @@ using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour
 {
-    //[SerializeField] private float speed;
     [SerializeField] private Rigidbody rbPlayer;
-    //[SerializeField] private float jumpPower;
-    //[SerializeField] private float dashPower;
     [SerializeField] private float positionYGravity;
     [SerializeField] private float finishZPosition;
-    [SerializeField] private Animator winPanelAnimator;
-    [SerializeField] private GameConfig gameConfig;
+
+    private bool isLevelCompleted;
+    
 
     private bool isDashing;// vodi evidencija dali player-ot momentalno e vo dash
     private Vector3 mouseDownPos;
+
+
+    private void Start()
+    {
+        Debug.LogError(GameManager.Instance.gameConfig.playerSpeed);
+    }
 
     private void Update()
     {
@@ -52,13 +56,21 @@ public class PlayerController : MonoBehaviour
             // treba da ja prikazeme animacijata Car_show
         }
 
-        if (Input.GetKeyDown(KeyCode.S))//show
+        //if (Input.GetKeyDown(KeyCode.S))//show
+        //{
+            
+        //}
+        //else if (Input.GetKeyDown(KeyCode.H)) // hide
+        //{
+            
+        //}
+
+        if (transform.position.z > GameManager.Instance.gameConfig.playerWinZTarget)
         {
-            winPanelAnimator.SetTrigger("show");
-        }
-        else if (Input.GetKeyDown(KeyCode.H)) // hide
-        {
-            winPanelAnimator.SetTrigger("hide");
+            // game won
+            UIManager.Instance.ShowWinPanel();
+            //isLevelCompleted = true;
+            //Time.timeScale = 0; // ne e dobra praksa ova da go pravite
         }
     }
 
@@ -69,23 +81,29 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        rbPlayer.MovePosition(transform.position + Vector3.forward * gameConfig.playerSpeed);
+        if (isLevelCompleted)
+            return;
+
+        rbPlayer.MovePosition(transform.position + Vector3.forward * GameManager.Instance.gameConfig.playerSpeed);
     }
 
     private void Jump()
     {
+        if (isLevelCompleted)
+            return;
+
         if (transform.position.y >= 2 && transform.position.y <= 3)
         {
-            rbPlayer.AddForce(Vector3.up * gameConfig.playerJumpPower);
+            rbPlayer.AddForce(Vector3.up * GameManager.Instance.gameConfig.playerJumpPower);
         }
     }
 
     private void Dash(Vector3 direction)
     {
-        if (isDashing)
+        if (isLevelCompleted || isDashing)
             return; // zavrsi ja funkcijata | ne go izvrsuvaj kodot nadolu
 
-        rbPlayer.AddForce(direction * gameConfig.playerDashPower);
+        rbPlayer.AddForce(direction * GameManager.Instance.gameConfig.playerDashPower);
         isDashing = true;
         Invoke("ResetDash", 0.75f);
     }
