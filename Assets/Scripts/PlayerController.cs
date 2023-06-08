@@ -17,7 +17,9 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        Debug.LogError(GameManager.Instance.gameConfig.playerSpeed);
+        //Debug.Log("Test 1");
+        //Debug.LogWarning("Test 2");
+        //Debug.LogError("Test 3");
     }
 
     private void Update()
@@ -69,7 +71,7 @@ public class PlayerController : MonoBehaviour
         {
             // game won
             UIManager.Instance.ShowWinPanel();
-            //isLevelCompleted = true;
+            isLevelCompleted = true;
             //Time.timeScale = 0; // ne e dobra praksa ova da go pravite
         }
     }
@@ -81,9 +83,6 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        if (isLevelCompleted)
-            return;
-
         rbPlayer.MovePosition(transform.position + Vector3.forward * GameManager.Instance.gameConfig.playerSpeed);
     }
 

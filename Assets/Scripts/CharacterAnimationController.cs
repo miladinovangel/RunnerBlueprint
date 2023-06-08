@@ -57,5 +57,6 @@ public class CharacterAnimationController : MonoBehaviour
 
 
 // Scriptable object
+// Singleton
 // PlayerPrefs
 // Particles
