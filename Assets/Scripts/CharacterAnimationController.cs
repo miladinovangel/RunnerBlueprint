@@ -35,3 +35,27 @@ public class CharacterAnimationController : MonoBehaviour
         //anim.SetFloat("test", 5f);
     }
 }
+
+
+// Sto treba da imate vo proektot:
+// - Scripts (kod/logika/programiranje)
+// - Prefabs (treba da bide organiziran proektot so prefabi)
+// - Scena (rabota so sceni)
+// - Animacii
+// - Grafika (mora da imate UI)
+// - 3d modeli 
+// - zvuci i muzika SFX
+// - efekti?
+// - fizika
+// - 
+
+
+
+
+
+
+
+
+// Scriptable object
+// PlayerPrefs
+// Particles

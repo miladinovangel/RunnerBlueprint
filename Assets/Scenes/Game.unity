@@ -1850,7 +1850,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1253085368
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2911,13 +2911,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 883e759f9b8a9a54685b383f1464f7f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.2
   rbPlayer: {fileID: 1595509307}
-  jumpPower: 250
-  dashPower: 350
   positionYGravity: 0
   finishZPosition: 0
   winPanelAnimator: {fileID: 1751352608}
+  gameConfig: {fileID: 11400000, guid: ccec56c01652664498504ecac8046e2d, type: 2}
 --- !u!1001 &1620109440
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3192,6 +3190,8 @@ MonoBehaviour:
   roadPrefab: {fileID: 9185021402400554945, guid: 5299f87befe8b184e94d24bd69ccfbbd, type: 3}
   distance: 9
   roadPartCount: 100
+  prefabs: {fileID: 11400000, guid: e7b7d93988f0195438794acb9f1d110a, type: 2}
+  config: {fileID: 11400000, guid: 55ebee5c00d94d14b926205d7cd4b756, type: 2}
 --- !u!1001 &1773642715
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3834,7 +3834,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2034087359
 RectTransform:
   m_ObjectHideFlags: 0

@@ -4,13 +4,14 @@ using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float speed;
+    //[SerializeField] private float speed;
     [SerializeField] private Rigidbody rbPlayer;
-    [SerializeField] private float jumpPower;
-    [SerializeField] private float dashPower;
+    //[SerializeField] private float jumpPower;
+    //[SerializeField] private float dashPower;
     [SerializeField] private float positionYGravity;
     [SerializeField] private float finishZPosition;
     [SerializeField] private Animator winPanelAnimator;
+    [SerializeField] private GameConfig gameConfig;
 
     private bool isDashing;// vodi evidencija dali player-ot momentalno e vo dash
     private Vector3 mouseDownPos;
@@ -68,14 +69,14 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        rbPlayer.MovePosition(transform.position + Vector3.forward * speed);
+        rbPlayer.MovePosition(transform.position + Vector3.forward * gameConfig.playerSpeed);
     }
 
     private void Jump()
     {
         if (transform.position.y >= 2 && transform.position.y <= 3)
         {
-            rbPlayer.AddForce(Vector3.up * jumpPower);
+            rbPlayer.AddForce(Vector3.up * gameConfig.playerJumpPower);
         }
     }
 
@@ -84,7 +85,7 @@ public class PlayerController : MonoBehaviour
         if (isDashing)
             return; // zavrsi ja funkcijata | ne go izvrsuvaj kodot nadolu
 
-        rbPlayer.AddForce(direction * dashPower);
+        rbPlayer.AddForce(direction * gameConfig.playerDashPower);
         isDashing = true;
         Invoke("ResetDash", 0.75f);
     }
