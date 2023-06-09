@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour // Singleton - design pattern - ova fun
 
     public GameConfig gameConfig;
 
-
     private void Awake()
     {
         Instance = this;
