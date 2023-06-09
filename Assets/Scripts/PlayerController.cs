@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody rbPlayer;
     [SerializeField] private float positionYGravity;
     [SerializeField] private float finishZPosition;
+    [SerializeField] private GameObject explosionParticles;
+    [SerializeField] private ParticleSystem particles;
 
     private bool isLevelCompleted;
     
@@ -74,6 +76,8 @@ public class PlayerController : MonoBehaviour
             UIManager.Instance.ShowWinPanel();
             isLevelCompleted = true;
             //Time.timeScale = 0; // ne e dobra praksa ova da go pravite
+            //Instantiate(explosionParticles, transform.position, Quaternion.identity, transform);
+            particles.Play();
         }
     }
 
