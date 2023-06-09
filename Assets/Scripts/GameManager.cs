@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour // Singleton - design pattern - ova fun
     public static GameManager Instance;
 
     public GameConfig gameConfig;
+    public ScoreScriptableObject scoreScriptableObject;
 
     private void Awake()
     {
