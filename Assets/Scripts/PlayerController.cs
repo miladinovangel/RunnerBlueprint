@@ -66,9 +66,10 @@ public class PlayerController : MonoBehaviour
         //{
             
         //}
-
-        if (transform.position.z > GameManager.Instance.gameConfig.playerWinZTarget)
+        //Debug.Log(player)
+        if (transform.position.z > GameManager.Instance.gameConfig.playerWinZTarget && !isLevelCompleted)
         {
+            Debug.Log("WON"); 
             // game won
             UIManager.Instance.ShowWinPanel();
             isLevelCompleted = true;
