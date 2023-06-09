@@ -12,12 +12,11 @@ public class LevelManager : MonoBehaviour
         Instance = this;
     }
 
-    public void NextLevel()
+    public void NextLevel() // ovaa funkcija se izvrsuva koga ke klikneme na kopceto next level
     {
-        // treba da proverite koi e posledniot zavrsen level
-        // so pomos na PlayerPrefs treba da go zacuvuvate levelot i da pristapuvate
-
-
-        SceneManager.LoadScene("Game" + PlayerPrefs.GetInt("level"));
+        int sceneIndex = PlayerPrefs.GetInt("levelIndex"); //zema zacuvana vrednost (permanentno vo vnatresna memorija) indeks na level
+        sceneIndex++; // go zgolemuvame
+        PlayerPrefs.SetInt("levelIndex", sceneIndex); // go zacuvuvame permanentno
+        SceneManager.LoadScene(sceneIndex);// ja loadirame scenata so noviot level
     }
 }
