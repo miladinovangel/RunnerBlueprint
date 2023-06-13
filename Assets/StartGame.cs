@@ -15,5 +15,8 @@ public class StartGame : MonoBehaviour
             PlayerPrefs.SetInt("levelIndex", sceneIndex);
         }
         SceneManager.LoadScene(sceneIndex);
+
+
+
     }
 }

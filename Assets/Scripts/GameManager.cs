@@ -13,4 +13,10 @@ public class GameManager : MonoBehaviour // Singleton - design pattern - ova fun
     {
         Instance = this;
     }
+
+    //public void ResetLevelIndex()
+    //{
+    //    PlayerPrefs.SetInt("levelIndex", 0); // overwrite
+    //    PlayerPrefs.DeleteKey("levelIndex"); // remove
+    //}
 }

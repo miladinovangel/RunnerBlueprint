@@ -18,5 +18,10 @@ public class LevelManager : MonoBehaviour
         sceneIndex++; // go zgolemuvame
         PlayerPrefs.SetInt("levelIndex", sceneIndex); // go zacuvuvame permanentno
         SceneManager.LoadScene(sceneIndex);// ja loadirame scenata so noviot level
+
+
+
+        // dodadete logika sto ke proveruva dali sme stignale do 4tiot level ili pogolem
+        // dokolku sme stignate - odi na random level od 1 do 3
     }
 }
