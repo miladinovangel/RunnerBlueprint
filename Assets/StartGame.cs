@@ -14,8 +14,14 @@ public class StartGame : MonoBehaviour
             sceneIndex++;
             PlayerPrefs.SetInt("levelIndex", sceneIndex);
         }
-        SceneManager.LoadScene(sceneIndex);
-
+        if (sceneIndex <= 3)
+        {
+            SceneManager.LoadScene(sceneIndex);
+        }
+        else
+        {
+            SceneManager.LoadScene(Random.Range(1, 4));
+        }
 
 
     }
