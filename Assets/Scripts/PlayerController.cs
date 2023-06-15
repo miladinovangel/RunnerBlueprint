@@ -78,6 +78,7 @@ public class PlayerController : MonoBehaviour
             //Time.timeScale = 0; // ne e dobra praksa ova da go pravite
             //Instantiate(explosionParticles, transform.position, Quaternion.identity, transform);
             particles.Play();
+            CameraController.Instance.SwitchToCamera2();
         }
     }
 

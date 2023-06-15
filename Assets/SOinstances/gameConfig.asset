@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e93db50022ac134ab6396ee69f138e4, type: 3}
   m_Name: gameConfig
   m_EditorClassIdentifier: 
-  playerSpeed: 0.5
+  playerSpeed: 0.1
   playerJumpPower: 250
   playerDashPower: 350
   playerWinZTarget: 50
