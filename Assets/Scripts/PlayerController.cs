@@ -80,6 +80,11 @@ public class PlayerController : MonoBehaviour
             particles.Play();
             CameraController.Instance.SwitchToCamera2();
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            CameraController.Instance.Shake();
+        }
     }
 
     private void FixedUpdate() // koga rabotime so fixed update, ne koristime time.deltaTime

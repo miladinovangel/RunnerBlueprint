@@ -24,4 +24,15 @@ public class CameraController : MonoBehaviour
         cam1.gameObject.SetActive(false);
         cam2.gameObject.SetActive(true);
     }
+
+    public void Shake(float strength = 1, float duration = 0.5f)
+    {
+        cam1.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = strength;
+        Invoke("StopShaking", duration);
+    }
+
+    private void StopShaking()
+    {
+        cam1.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0;
+    }
 }
